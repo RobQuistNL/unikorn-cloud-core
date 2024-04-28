@@ -17,12 +17,14 @@ limitations under the License.
 package userinfo
 
 import (
+	"github.com/coreos/go-oidc/v3/oidc"
 	"github.com/go-jose/go-jose/v3/jwt"
 
 	"github.com/unikorn-cloud/core/pkg/authorization/rbac"
 )
 
 type UserInfo struct {
-	jwt.Claims `json:",inline"`
-	RBAC       *rbac.Permissions `json:"rbac,omitempty"`
+	jwt.Claims    `json:",inline"`
+	RBAC          *rbac.Permissions `json:"rbac,omitempty"`
+	oidc.UserInfo `json:",inline"`
 }
